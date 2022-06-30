@@ -6,12 +6,12 @@ import sass from "sass";
 const rendered = {},
       watching = {};
 
-const watchFile = async file => {
+const watchFile = async (file, mainFile) => {
     if (watching[file]) return;
 
     watching[file] = fs.watch(file);
     for await (const e of watching[file])
-        if (e.eventType === "change") delete rendered[file];
+        if (e.eventType === "change") delete rendered[mainFile];
 }
 
 export default (cssFolder = "css", scssFolder) => {
@@ -32,7 +32,7 @@ export default (cssFolder = "css", scssFolder) => {
         if (rendered[fileName]){
             res.header("content-type", "text/css");
             res.send(rendered[fileName].css.toString());
-            rendered[fileName].loadedUrls.map(url => url.pathname).forEach(watchFile);
+            rendered[fileName].loadedUrls.map(url => url.pathname).forEach(file => watchFile(file, fileName));
         } else {
             res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).end();
         }
