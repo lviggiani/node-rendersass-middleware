@@ -1,0 +1,24 @@
+{
+  "name": "rendersass-middleware",
+  "version": "1.0.0",
+  "description": "Reders scss in memory and delivers it. It also watches the .scss files for changes and re-render automatically",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lviggiani/node-rendersass-middleware.git"
+  },
+  "author": "Luca Viggiani <lviggiani@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lviggiani/node-rendersass-middleware/issues"
+  },
+  "homepage": "https://github.com/lviggiani/node-rendersass-middleware#readme",
+  "dependencies": {
+    "sass": "*",
+    "http-status-codes": "*"
+  }
+}
